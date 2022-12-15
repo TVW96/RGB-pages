@@ -44,6 +44,7 @@ const Carousel = ({ children }) => {
                 {React.Children.map(children, (child, index) => {
                     return (
                         <button
+                            className={`${index === activeIndex ? "active" : ""}`}
                             onClick={() => {
                                 updateIndex(index);
                             }}
