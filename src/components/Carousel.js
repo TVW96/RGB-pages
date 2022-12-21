@@ -3,7 +3,7 @@ import {useSwipeable} from "react-swipeable";
 
 import "./Carousel.css";
 
-export const CarouselItem = ({ children, width }) => {
+export const CarouselItem = ({ children, width, myColor }) => {
     return (
         <div className="carousel-item" style={{ width: width }}>
             {children}
@@ -30,7 +30,7 @@ const Carousel = ({ children }) => {
             if (!paused) {
                 updateIndex(activeIndex + 1);
             }
-        }, 2000);
+        }, 4000);
 
         return () => {
             if (interval) {

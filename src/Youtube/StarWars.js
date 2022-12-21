@@ -5,21 +5,21 @@ import YouTube from 'react-youtube';
 // https://www.youtube.com/watch?v=92CxXIyh6FI
 // https://youtu.be/92CxXIyh6FI -- Share link
 
-class YoutubeStarWars extends Component {
+class StarWars extends Component {
   videoOnReady(event) {
     // access to player in all event handlers via event.target
     const player = event.target
-    player.seekTo(10)
+    player.seekTo(5)
     event.target.pauseVideo();
     // console.log(event.target);
   }
 VideoOnPlay (event) {
     const player = event.target
 }
-videoStateChange (event) {
-    const player = event.target
-    console.log(player.getCurrentTime())
-}
+// videoStateChange (event) {
+//     const player = event.target
+//     console.log(player.getCurrentTime())
+// }
     render() {
         const opts = {
           height: '390',
@@ -36,4 +36,4 @@ videoStateChange (event) {
       
     }
 
-export default YoutubeStarWars
+export default StarWars
