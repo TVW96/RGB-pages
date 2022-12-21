@@ -1,54 +1,45 @@
-// import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import React from 'react';
 import Navbar from './components/Navbar'
 import "./styles.css"
 import Home from "./pages/Home"
 import Red from "./pages/Red"
 import Green from "./pages/Green"
 import Blue from "./pages/Blue"
-import Carousel, {CarouselItem} from "./components/Carousel";
-import YoutubeStarWars from './thirdParty/YoutubeStarWars';
-import YoutubeIncredibles from './thirdParty/YoutubeIncredibles';
-import YoutubeToyStory from './thirdParty/YoutubeToyStory';
 
-// import {Carousel} from './components/Carousel';
-// import {Navbar} from './components/Navbar';
+import Carousel, {CarouselItem} from "./components/Carousel";
+import StarWars from './Youtube/StarWars';
+import Incredibles from './Youtube/Incredibles';
+import ToyStory from './Youtube/ToyStory';
+
+
+
 
 function App() {
-  // console.log(window.location)
-  let component
-  switch (window.location.pathname) {
-    case "/":
-      component = <Home />
-      break
-    case "/red":
-      component = <Red />
-      break
-    case "/green":
-      component = <Green />
-      break
-    case "/blue":
-      component = <Blue />
-      break
-    default:
-      component = <Home />
-  }
-
+  const onClickHandler = () => {
+    }
   return (
     <>
-      <Navbar />
-      <div className="container">
-      {component}
-      </div>
-      <div className="App">
-        <Carousel>
-          <CarouselItem><YoutubeStarWars videoId='92CxXIyh6FI' /></CarouselItem>
-          <CarouselItem><YoutubeIncredibles videoId='M5Pk9FMxrp4' /></CarouselItem>
-          <CarouselItem><YoutubeToyStory videoId='wIHAczUp1fQ' /></CarouselItem>
-        </Carousel>
-      </div>
-      
+      <header>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route onClick={onClickHandler} path="/" element={<Home />} />
+            <Route onClick={onClickHandler} path="/red" element={<Red />} />
+            <Route onClick={onClickHandler} path="/green" element={<Green />} />
+            <Route onClick={onClickHandler} path="/blue" element={<Blue />} />
+          </Routes>
+        </BrowserRouter>
+        {/* {component} */}
+
+        <div className="App">
+            <Carousel myColor="red"> 
+            <CarouselItem><StarWars videoId='92CxXIyh6FI' /></CarouselItem>
+            <CarouselItem><Incredibles videoId='M5Pk9FMxrp4' /></CarouselItem>
+            <CarouselItem><ToyStory videoId='wIHAczUp1fQ' /></CarouselItem>
+            </Carousel>
+        </div>
+      </header>
     </>
   );
 }
